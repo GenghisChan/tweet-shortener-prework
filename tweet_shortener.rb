@@ -1,52 +1,57 @@
 def dictionary
-  convert = {
-   "hello" => "hi",
-   "to" => "2",
-   "two" => "2",
-   "too" => "2",
-   "for" => "4",
-   "four" => "4",
-   "be" => "b",
-   "you" => "u",
-   "at" => "@",
-   "and" => "&"
+dictionary = {
+  "too" => "2",
+  "to" => "2",
+  "two" =>"2",
+  "four" => "4",
+  "for" => "4",
+  "be" => "b",
+  "you" => "u",
+  "at" => "@",
+  "and" => "&"
 }
 end
 
-def word_substituter(tweet)
-  # replaces long words with their expected short form
+# You can use regex or, check out the solution below that
+# def word_substituter(tweet)
+#   tweet = tweet.dup
+#   dictionary.each do |word, replacement|
+#     if tweet.include?(word)
+#       tweet.gsub!(/\b#{word}\b/i, replacement)
+#     end
+#   end
+#   tweet
+# end
 
-    tweet.split(" ").map do |word|
-      if dictionary.keys.include?(word.downcase)
-        word = dictionary[word.downcase]
-      else
-        word
-  end
-end.join(" ")
+
+def word_substituter(tweet)
+  tweet.split.collect do |word|
+    if dictionary.keys.include?(word.downcase)
+      word = dictionary[word.downcase]
+    else
+      word
+    end
+  end.join(" ")
 end
 
-def bulk_tweet_shortener(tweet)
-  tweet.map do |phrase|
-    puts word_substituter(phrase)
+def bulk_tweet_shortener(tweets)
+  tweets.each do |tweet|
+    puts word_substituter(tweet)
   end
 end
 
 def selective_tweet_shortener(tweet)
-  tweet.split(" ").map do |phrase|
-    if phrase.length > 140
-      word_substituter(phrase)
-    elsif phrase.length <= 140
-      phrase
-    end
+  if tweet.length > 140
+    word_substituter(tweet)
+  else
+    tweet
   end
 end
 
 def shortened_tweet_truncator(tweet)
-  tweet.split(" ").map do |phrase|
-    if phrase.length > 140
-      word_substituter(phrase)[0..140] + "..."
-    else
-      phrase
-    end
-  end.join(" ")
+  if word_substituter(tweet).length > 140
+    word_substituter(tweet)[0..136] + '...'
+  else
+    tweet
+  end
 end
