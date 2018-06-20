@@ -44,11 +44,7 @@ end
 def shortened_tweet_truncator(tweet)
   if tweet.length > 140
     bulk_tweet_shortener(tweet)
-    if tweet == 140
-      puts tweet
-    elsif tweet > 140
-      selective_tweet_shortener(tweet)
-    elsif
+  elsif tweet.length <= 140
       tweet
 
     end
