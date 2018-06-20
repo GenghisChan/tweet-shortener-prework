@@ -29,7 +29,7 @@ end
 
 def bulk_tweet_shortener(tweet)
   tweet.map do |word|
-  puts word_substituter(word)
+  word_substituter(word)
 end
 
 end
@@ -43,6 +43,7 @@ end
 
 def shortened_tweet_truncator(tweet)
   if tweet.length > 140
-    tweet
+    bulk_tweet_shortener(tweet)
+    if tweet
   end
 end
