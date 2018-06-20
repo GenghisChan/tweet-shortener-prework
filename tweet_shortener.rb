@@ -29,6 +29,6 @@ end
 def bulk_tweet_shortener(tweet)
   if tweet.length > 140
     tweet.slice!(140..tweet.length)
-    tweet
+    puts tweet
   end
 end
