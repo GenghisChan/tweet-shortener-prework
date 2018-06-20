@@ -12,7 +12,7 @@ def dictionary
   and: "&"
   }
 end
- 
+
   def word_substituter(tweet)
   # replaces long words with their expected short form
 
@@ -25,7 +25,6 @@ end
 end.join(" ")
 end
 
-end
 
 def bulk_tweet_shortener(tweet)
   if tweet.length > 140
