@@ -29,7 +29,7 @@ end
 
 def bulk_tweet_shortener(tweet)
   tweet.map do |word|
-  word_substituter(word)
+  puts word_substituter(word)
 end
 
 end
