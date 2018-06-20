@@ -15,8 +15,8 @@ end
 
   def word_substituter(tweet)
   # replaces long words with their expected short form
-    tweet = tweet.split
-    tweet.map do |word|
+    
+    tweet.split.map do |word|
       if dictionary.keys.include?(word.downcase)
         word = dictionary[word.downcase]
       else
@@ -41,7 +41,7 @@ def selective_tweet_shortener(tweet)
 end
 
 def shortened_tweet_truncator(tweet)
-  if tweet.length < 140
+  if tweet.length > 140
     tweet
   end
 end
