@@ -31,5 +31,5 @@ def bulk_tweet_shortener(tweet)
     tweet.slice!(140..tweet.length)
     tweet
   end
-  
+
 end
